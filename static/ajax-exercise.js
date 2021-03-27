@@ -4,10 +4,10 @@
 // PART 1: SHOW A FORTUNE
 
 function showFortune(evt) {
-
-    $.get('/fortune', (res) =>{
-        $('#fortune-text').html(res);
-    });
+    // $.get('/fortune', (res) =>{
+    //     $('#fortune-text').html(res);
+    // });
+    $('#fortune-text').load('/fortune');
 }
 
 $('#get-fortune-button').on('click', showFortune);
@@ -18,7 +18,7 @@ function showWeather(evt) {
     evt.preventDefault();
 
     let url = "/weather.json";
-    let formData = {"zipcode": $("#zipcode-field").val()};
+    let formData = $('#weather-form').serialize();
 
     $.get(url, formData, (response) => {
         $('#weather-info').html(response['forecast']);
